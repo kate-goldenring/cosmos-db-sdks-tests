@@ -51,7 +51,8 @@ func main() {
 	}
 	pk := azcosmos.NewPartitionKeyString(partitionKeyString)
 	// Assuming a bar item exists
-	timeFuncExecution(func() { readItem(containerClient, "bar", pk) })
+	timeFuncExecution(func() { queryItem(containerClient, "bar", pk) })
+	// Rerun and reusing the client leads to 5x faster times
 	timeFuncExecution(func() { queryItem(containerClient, "bar", pk) })
 }
 
